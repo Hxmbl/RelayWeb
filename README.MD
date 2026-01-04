@@ -3,9 +3,9 @@
 
 * Vite
 * TypeScript
-* SolidJS or React
+* SolidJS
+* Tailwind
 * Static UI (fake emails)
-* No Gmail yet. No auth. Just layout.
 
 -----
 
@@ -17,7 +17,7 @@
 * Fetch threads
 * Render sender + subject + snippet
 
-## Still:
+## But:
 
 * No sending
 * No replying
