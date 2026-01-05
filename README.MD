@@ -1,10 +1,6 @@
 # Phase 1: Skeleton (Very Small)
 ## Goal: See something on screen
 
-* Vite
-* TypeScript
-* SolidJS
-* Tailwind
 * Static UI (fake emails)
 
 -----
