@@ -1,4 +1,5 @@
 import { AppProps } from "$fresh/server.ts";
+import Sidebar from "../islands/Sidebar.tsx";
 
 export default function App({ Component }: AppProps) {
     return (
