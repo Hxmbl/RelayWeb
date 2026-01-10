@@ -5,6 +5,8 @@ export default function Sidebar() {
     const open = useSignal(false);
     // Signal for Inbox submenu toggle
     const inboxOpen = useSignal(false);
+    // Signal for Sent submenu toggle
+    const sentOpen = useSignal(false);
 
     return (
         <>
@@ -32,48 +34,31 @@ export default function Sidebar() {
                     {/* Inbox section */}
                     <div className="flex flex-col gap-1">
                         <div className="flex items-center justify-between p-2 rounded hover:bg-gray-800">
-                            {/* Inbox link with icon */}
                             <a href="#" className="flex items-center flex-1">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="w-6 h-6 text-gray-400"
-                                    viewBox="0 -960 960 960"
-                                    fill="currentColor"
-                                >
+                                <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-gray-400" viewBox="0 -960 960 960" fill="currentColor">
                                     <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-120H640q-30 38-71.5 59T480-240q-47 0-88.5-21T320-320H200v120Zm280-120q38 0 69-22t43-58h168v-360H200v360h168q12 36 43 58t69 22ZM200-200h560-560Z" />
                                 </svg>
                                 <span className="ml-2">Inbox</span>
                             </a>
 
-                            {/* Toggle button for Inbox subcategories */}
+                            {/* Toggle Inbox */}
                             <button
                                 aria-label="Toggle Inbox"
-                                className={`ml-2 text-gray-400 hover:text-white transition-transform ${
-                                    inboxOpen.value ? "rotate-90" : ""
-                                }`}
+                                className={`ml-2 text-gray-400 hover:text-white transition-transform ${inboxOpen.value ? "rotate-90" : ""}`}
                                 onClick={(e) => {
                                     e.preventDefault();
                                     e.stopPropagation();
                                     inboxOpen.value = !inboxOpen.value;
                                 }}
                             >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="w-4 h-4"
-                                    viewBox="0 -960 960 960"
-                                    fill="currentColor"
-                                >
+                                <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 -960 960 960" fill="currentColor">
                                     <path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z" />
                                 </svg>
                             </button>
                         </div>
 
-                        {/* Inbox sub-categories */}
-                        <div
-                            className={`ml-4 flex-col gap-1 ${
-                                inboxOpen.value ? "flex" : "hidden"
-                            }`}
-                        >
+                        {/* Inbox subcategories */}
+                        <div className={`ml-4 flex-col gap-1 ${inboxOpen.value ? "flex" : "hidden"}`}>
                             <a href="#" className="p-2 rounded text-sm hover:bg-gray-800 flex items-center">
                                 <span className="ml-2">Promotions</span>
                             </a>
@@ -86,22 +71,44 @@ export default function Sidebar() {
                         </div>
                     </div>
 
-                    {/* Other top-level nav items */}
-                    <a href="#" className="p-2 rounded hover:bg-gray-800 flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
-                            <path d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z"/>
-                        </svg>
-                        <span className="ml-2">Sent</span>
-                    </a>
+                    {/* Sent section (with Drafts nested inside) */}
+                    <div className="flex flex-col gap-1">
+                        <div className="flex items-center justify-between p-2 rounded hover:bg-gray-800">
+                            <a href="#" className="flex items-center flex-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+                                    <path d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z"/>
+                                </svg>
+                                <span className="ml-2">Sent</span>
+                            </a>
 
-                    <a href="#" className="p-2 rounded hover:bg-gray-800 flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
-                            <path d="m480-920 362 216q18 11 28 30t10 40v434q0 33-23.5 56.5T800-120H160q-33 0-56.5-23.5T80-200v-434q0-21 10-40t28-30l362-216Zm0 466 312-186-312-186-312 186 312 186Zm0 94L160-552v352h640v-352L480-360Zm0 160h320-640 320Z"/>
-                        </svg>
-                        <span className="ml-2">Drafts</span>
-                    </a>
+                            {/* Toggle Sent submenu */}
+                            <button
+                                aria-label="Toggle Sent submenu"
+                                className={`ml-2 text-gray-400 hover:text-white transition-transform ${sentOpen.value ? "rotate-90" : ""}`}
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    sentOpen.value = !sentOpen.value;
+                                }}
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 -960 960 960" fill="currentColor">
+                                    <path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z" />
+                                </svg>
+                            </button>
+                        </div>
 
-                    {/* Spacer to push bottom items down */}
+                        {/* Drafts nested inside Sent */}
+                        <div className={`ml-4 flex-col gap-1 ${sentOpen.value ? "flex" : "hidden"}`}>
+                            <a href="#" className="p-2 rounded text-sm hover:bg-gray-800 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+                                    <path d="m480-920 362 216q18 11 28 30t10 40v434q0 33-23.5 56.5T800-120H160q-33 0-56.5-23.5T80-200v-434q0-21 10-40t28-30l362-216Zm0 466 312-186-312-186-312 186 312 186Zm0 94L160-552v352h640v-352L480-360Zm0 160h320-640 320Z"/>
+                                </svg>
+                                <span className="ml-2">Drafts</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    {/* Spacer */}
                     <div className="flex-1" />
 
                     {/* Bottom section */}
