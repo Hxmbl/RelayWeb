@@ -11,7 +11,7 @@ export default function App({ Component }: AppProps) {
             {/* Tailwind CDN */}
             <script src="https://cdn.tailwindcss.com"></script>
 
-            <title>RelayWeb</title>
+            <title>Relay</title>
         </head>
         <body>
         <Component />

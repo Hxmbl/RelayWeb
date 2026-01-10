@@ -7,7 +7,7 @@ export default function Home() {
 
         <main class="flex-1 p-6">
           <h1 class="text-3xl font-bold mb-4">
-            Welcome to RelayWeb
+            Welcome to Relay
           </h1>
           <p>
             This is your main content area.
